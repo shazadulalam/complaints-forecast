@@ -44,3 +44,44 @@ def add_calendar_features(df: pd.DataFrame) -> pd.DataFrame:
         df[f"year_cos_{k}"] = np.cos(2 * np.pi * k * df["day_of_year"] / 365.25)
 
     return df
+
+
+LAG_DAYS = [1, 2, 3, 7, 14, 28]
+
+def add_lag_features(df: pd.DataFrame) -> pd.DataFrame:
+    for lag in LAG_DAYS:
+        df[f"lag_{lag}"] = df[TARGET_COL].shift(lag)
+    return df
+
+
+ROLL_WINDOWS = [7, 14, 28]
+
+def add_rolling_features(df: pd.DataFrame) -> pd.DataFrame:
+    for w in ROLL_WINDOWS:
+        rolled = df[TARGET_COL].shift(1).rolling(w, min_periods=1)
+        df[f"roll_mean_{w}"] = rolled.mean()
+        df[f"roll_std_{w}"] = rolled.std()
+    return df
+
+
+# exogenous column identification
+
+def validate_exog(df: pd.DataFrame) -> pd.DataFrame:
+    for col in EXOG_COLS:
+        if col in df.columns:
+            df[col] = df[col].ffill().bfill()
+    return df
+
+
+def build_features(df: pd.DataFrame) -> pd.DataFrame:
+    df = add_trend_features(df)
+    df = add_calendar_features(df)
+    df = add_lag_features(df)
+    df = add_rolling_features(df)
+    df = validate_exog(df)
+    return df
+
+
+def get_feature_columns(df: pd.DataFrame) -> list[str]:
+    exclude = {DATE_COL, TARGET_COL, "row_id", "centered_7d_mean"}
+    return [c for c in df.columns if c not in exclude]
