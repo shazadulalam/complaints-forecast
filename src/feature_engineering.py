@@ -26,6 +26,7 @@ def add_trend_features(df: pd.DataFrame) -> pd.DataFrame:
 
 def add_calendar_features(df: pd.DataFrame) -> pd.DataFrame:
     
+    dt = df[DATE_COL]  
     df["day_of_week"] = dt.dt.dayofweek
     df["day_of_month"] = dt.dt.day
     df["month"] = dt.dt.month
