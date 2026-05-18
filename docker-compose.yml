@@ -1,0 +1,14 @@
+version: "1.0"
+
+services:
+  forecast:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: complaints-forecast
+    volumes:
+      - ./outputs:/app/outputs
+      - ./data:/app/data:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: "no"
