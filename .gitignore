@@ -10,6 +10,4 @@ venv/
 env/
 .env
 *.log
-outputs/
-data/*.xlsx
 .DS_Store
