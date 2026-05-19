@@ -64,7 +64,7 @@ def cross_validation(df: pd.DataFrame, all_cols: list[str], no_lag_cols: list[st
         test_dates = df.iloc[test_idx][DATE_COL]
 
         print(f"  Fold {fold_i + 1}  train={len(train_idx):>4d}  test={len(test_idx):>3d}  "
-              f"({df.iloc[test_idx[0]][DATE_COL].date()} → {df.iloc[test_idx[-1]][DATE_COL].date()})")
+              f"({df.iloc[test_idx[0]][DATE_COL].date()} to {df.iloc[test_idx[-1]][DATE_COL].date()})")
 
         for name, (model_fn, cols) in model_specs.items():
             if name == "Seasonal Naive":
