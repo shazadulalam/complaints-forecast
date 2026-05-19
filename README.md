@@ -100,7 +100,7 @@ complaints-forecast/
 |-- tests/
 |   |-- __init__.py
 |   |-- test_pipeline.py
-`-- outputs/
+|-- outputs/
     |-- forecast_90d.csv
     |-- coefficients.csv
     |-- diagnostics.png
