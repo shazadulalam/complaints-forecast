@@ -57,7 +57,7 @@ At the moment, complaint volumes are measured reactively without projections. Th
 
 1. **Clone the Repository:**
    ```bash
-   git clone git@github.com:<your-username>/complaint-forecasting.git
+   git clone git@github.com:shazadulalam/complaints-forecast.git
    cd complaint-forecasting
    ```
 
@@ -83,12 +83,12 @@ complaints-forecast/
 |-- README.md
 |-- .gitignore
 |-- .github/
-|   `-- workflows/
-|       `-- ci.yml
+|   -- workflows/
+|       -- ci.yml
 |-- notebook/
-|   `-- eda_notebook.ipynb
+|   -- eda_notebook.ipynb
 |-- data/
-|   `-- Principle_Data_Scientist_Tech_Assessment.xlsx
+|   -- Principle_Data_Scientist_Tech_Assessment.xlsx
 |-- src/
 |   |-- __init__.py
 |   |-- config.py
@@ -96,17 +96,18 @@ complaints-forecast/
 |   |-- feature_engineering.py
 |   |-- models.py
 |   |-- evaluation.py
-|   `-- forecast.py
+|   |-- forecast.py
 |-- tests/
 |   |-- __init__.py
-|   `-- test_pipeline.py
+|   |-- test_pipeline.py
 `-- outputs/
     |-- forecast_90d.csv
     |-- coefficients.csv
     |-- diagnostics.png
     |-- forecast_90d.png
-    `-- seasonality.png
+    |-- seasonality.png
 ```
+#### Please make sure to change your data file location.
 
 ### Usage
 
@@ -131,7 +132,7 @@ complaints-forecast/
    ```bash
    docker compose up --build
    ```
-   Outputs will be volume-mounted to `./outputs/` on the host machine.
+   Outputs will be added to `./outputs/` on the host machine.
 
 ### What to Expect
 
